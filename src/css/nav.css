@@ -1,0 +1,24 @@
+.gft{
+  color:#EF5777;
+}
+.abr{
+  color:#EF5777;
+}
+.nav-item{
+  color:#ffff;
+}
+.my-navbar .navbar-collapse .navbar-nav .nav-link .active{
+  color:#EF5777;
+}
+.my-navbar .navbar-collapse .navbar-nav .nav-link{
+  color:#ffff;
+}
+.my-navbar .navbar-collapse .navbar-nav .nav-link:hover{
+  color:#EF5777!important;
+}
+.af{
+  color:#EF5777;
+}
+.navbar-dark .navbar-nav .active>.nav-link{
+  color:#EF5777!important;
+}
