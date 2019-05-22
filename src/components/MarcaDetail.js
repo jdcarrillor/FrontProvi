@@ -4,11 +4,8 @@ import '../css/producto-style.css';
 import {Link} from 'react-router-dom';
 import axios from 'axios'
 import {FormattedMessage} from "react-intl";
-import detectBrowserLanguage from 'detect-browser-language';
-
 
 import styled from 'styled-components';
-import ReactTimeout from 'react-timeout'
 const Container = styled.div`
 background-color: #444;
 color:white;
@@ -39,8 +36,7 @@ class MarcaDetail extends Component{
 
   componentDidMount() {
         var id=this.props.match.params.idMarca;
-        var i;
-            axios.get('https://regalayapp1.herokuapp.com/marcas/'+id)
+            axios.get('http://localhost:3001/marcas/'+id)
                 .then((response) => {
                     var state = this.state;
                     var marca = response.data;
@@ -126,13 +122,7 @@ class MarcaDetail extends Component{
         
       }
        this.setState({top:1100, msg:"Se creo correctamente"});
-      var tok=localStorage.getItem('token');
-      if (tok) {
-        var token = localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.defaults.headers.common['Authorization'] =
-            'Bearer ' + token;
-      }
-      axios.post('https://regalayapp1.herokuapp.com/marcas', marca);
+      axios.post('http://localhost:3001/marcas', marca);
       this.props.setTimeout(this.reset, 500000);
   /*    this.props.history.push('/MarcaList');
       window.location.reload();*/
@@ -141,23 +131,23 @@ class MarcaDetail extends Component{
     }
     putMarca=()=>{
       let nombre=document.getElementById('nombrePut').value;
-      if(nombre==""){
+      if(nombre===""){
         nombre=this.state.nombre;
       }
       let clas=document.getElementById('clasificacionPut').value;
-      if(clas==""){
+      if(clas===""){
         clas=this.state.clasificacion;
       }
       let origen=document.getElementById('origenPut').value;
-      if(origen==""){
+      if(origen===""){
         origen=this.state.origen;
       }
       let img=document.getElementById('urlPut').value;
-      if(img==""){
+      if(img===""){
         img=this.state.imagen;
       }
       let des=document.getElementById('descripcionPut').value;
-      if(des==""){
+      if(des===""){
         des=this.state.descripcion;
       }
      
@@ -169,25 +159,13 @@ class MarcaDetail extends Component{
         origen:origen
       }
       this.setState({top:1100, msg:"Se creo correctamente"});
-      var tok=localStorage.getItem('token');
-      if (tok) {
-        var token = localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.defaults.headers.common['Authorization'] =
-            'Bearer ' + token;
-      }
-      axios.put('https://regalayapp1.herokuapp.com/marcas/'+this.state.id, marca);
+      axios.put('http://localhost:3001/marcas/'+this.state.id, marca);
       this.props.setTimeout(this.reset, 500000);
       console.log(this.state.id);
     }
     deleteMarca=()=>{
-      var tok=localStorage.getItem('token');
-      if (tok) {
-        var token = localStorage.getItem('token').substring(1, localStorage.getItem('token').length - 1);
-        axios.defaults.headers.common['Authorization'] =
-            'Bearer ' + token;
-      }
-      axios.delete('https://regalayapp1.herokuapp.com/marcas/'+this.state.id);
-      window.location.href = 'https://regalayapp1.herokuapp.com/MarcaList';
+      axios.delete('http://localhost:3001/marcas/'+this.state.id);
+      window.location.href = 'http://localhost:3000/MarcaList';
       console.log(this.state.id);
     }
      reset=()=>{
@@ -202,7 +180,7 @@ class MarcaDetail extends Component{
       <div className="float-left">
         <div className="card text-center eso">
           <div className="overflow">
-            <img className='card-img-top' src={this.state.imagen} alt='Image 1'/>
+            <img className='card-img-top' src={this.state.imagen} alt='Image1'/>
           </div>
             <div className="card-body text-dark">
             <h1 className="card-title">{this.state.nombre}</h1>
@@ -257,7 +235,7 @@ class MarcaDetail extends Component{
               <button className="create" onClick={this.postMarca}><FormattedMessage id="Create"/></button>
           </div>
         </div>
-        </form >
+        </form>
       </div>
       <div className="float-left abc">
         <h1><FormattedMessage id="Modify"/> </h1>
@@ -298,7 +276,7 @@ class MarcaDetail extends Component{
             <button className="back" onClick={this.putMarca}><FormattedMessage id="Modify"/></button>
           </div>
         </div>
-        </form >
+        </form>
       </div>
       </div>
       </React.Fragment>

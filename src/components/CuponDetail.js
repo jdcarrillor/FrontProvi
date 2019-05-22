@@ -6,29 +6,8 @@ import axios from 'axios'
 import {FormattedMessage} from "react-intl";
 import {FormattedNumber} from 'react-intl';
 import {FormattedDate} from 'react-intl';
-import styled from 'styled-components';
-import ReactTimeout from 'react-timeout'
-import  {
-  createClass,
-  PropTypes,
-} from 'react';
-import {
-  IntlMixin,
-} from 'react-intl';
-const Container = styled.div`
-background-color: #444;
-color:white;
-position:absolute;
-top:${props=>props.top}px;
-z-index:999;
-transition: top 0.5s ease;
-margin-left: 1150px;
 
-`;
 class CuponDetail extends Component{
-
-
-
 
   constructor(props){
     super(props);
@@ -48,7 +27,6 @@ class CuponDetail extends Component{
   componentDidMount() {
         const id=this.props.match.params.idCupon;
         console.log(id);
-        var i;
             axios.get('https://regalayapp1.herokuapp.com/cupones/'+id)
                 .then((response) => {
                     var state = this.state;
@@ -97,20 +75,20 @@ class CuponDetail extends Component{
 
       putCupon=()=>{
       let idMarca=document.getElementById('idMarcaPut').value;
-      if(idMarca==0){
+      if(idMarca===0){
         idMarca=this.state.idMarca;
       }
       let idTienda=document.getElementById('idTiendaPut').value;
-      if(idTienda==0){
+      if(idTienda===0){
         idTienda=this.state.idTienda;
       }
       let valor=document.getElementById('valorPut').value;
-      if(valor==0){
+      if(valor===0){
         valor=this.state.valor;
       }
 
        let fechaVencimiento=document.getElementById('fechaVencimientoPut').value;
-      if(fechaVencimiento==""){
+      if(fechaVencimiento===""){
         fechaVencimiento=this.state.fechaVencimiento;
       }
       
@@ -158,7 +136,7 @@ class CuponDetail extends Component{
       <div className="float-left">
         <div className="card text-center eso">
           <div className="overflow">
-            <img className='card-img-top' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCk5eWvXs13e_7NnqtKtYikKS9jpX0nvRbfp0zAyYH13HmEq4TaQ" alt='Image 1'/>
+            <img className='card-img-top' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCk5eWvXs13e_7NnqtKtYikKS9jpX0nvRbfp0zAyYH13HmEq4TaQ" alt='Image1'/>
           </div>
             <div className="card-body text-dark">
             <h1 className="card-title"><FormattedMessage id="Reference"/>: {this.props.match.params.idCupon}</h1>
@@ -216,7 +194,7 @@ class CuponDetail extends Component{
               <button class="create" onClick={this.postCupon}><FormattedMessage id="Create"/></button>
           </div>
         </div>
-        </form >
+        </form>
         </div>
       </div>
       <div class="col-5">
@@ -254,7 +232,7 @@ class CuponDetail extends Component{
             <button class="back" onClick={this.putCupon}><FormattedMessage id="Modify"/></button>
           </div>
         </div>
-        </form >
+        </form>
       </div>
       </div>
       </div>

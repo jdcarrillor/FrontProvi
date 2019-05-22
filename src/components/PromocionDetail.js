@@ -158,17 +158,17 @@ class PromocionDetail extends Component{
       <div className="float-left">
       <div className="card text-center">
         <div className="overflow">
-          <img className='card-img-top' src={this.state.tienda} alt='Image 1'/>
+          <img className='card-img-top' src={this.state.tienda} alt='Image1'/>
         </div>
         <div className="card-body text-dark">
         <h1 className="card-title">{this.state.nombre}</h1>
         </div>
         <div className="row">
         <div className="overflow">
-          <img className='card-img-top down' src={this.state.marcas[0]} alt='Image 1'/>
+          <img className='card-img-top down' src={this.state.marcas[0]} alt='Image1'/>
         </div>
         <div className="overflow">
-          <img className='card-img-top down' src={this.state.marcas[1]} alt='Image 1'/>
+          <img className='card-img-top down' src={this.state.marcas[1]} alt='Image1'/>
         </div>
         </div>
         <div className="container">

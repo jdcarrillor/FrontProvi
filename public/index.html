@@ -4,9 +4,11 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="https://icaminodefe.files.wordpress.com/2016/06/logo-regalo.png?w=648" />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> 
-    <link rel="stylesheet" href="../src/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">
     <link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+    
+
+    <script src="https://d3js.org/d3.v3.min.js"></script>
 
     <meta
       name="viewport"
@@ -33,6 +35,177 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root" role="main"></div>
+    <div id="chart1" class="chart"></div>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+        <div style="align-content: center">
+               <script type="text/javascript" >
+          $( document ).ready(function() {
+              render_chart();
+              });
+
+              function render_chart(){
+                var stack = d3.layout.stack();
+                var dataset = {
+                "categories": ['Productos','Promociones','Cupones','Destinos','Marcas','Tarjetas','Tiendas'],
+                "series": ["Usuarios","Facturas","Compras"],
+                "colors": ["#808080","#DD133F","#C0C0C0"],
+                "layers": [
+                        [
+                            {"y":1,"y0":20,"month":"Productos"},
+                            {"y":2,"y0":18,"month":"Promociones"},
+                            {"y":5,"y0":18,"month":"Cupones"},
+                            {"y":10,"y0":20,"month":"Destinos"},
+                            {"y":14,"y0":23,"month":"Marcas"},
+                            {"y":18,"y0":29,"month":"Tarjetas"},
+                            {"y":20,"y0":31,"month":"Tiendas"}
+                        ],
+                        [
+                            {"y":12,"y0":24,"month":"Productos"},
+                            {"y":14,"y0":25,"month":"Promociones"},
+                            {"y":13,"y0":31,"month":"Cupones"},
+                            {"y":16,"y0":32,"month":"Destinos"},
+                            {"y":18,"y0":33,"month":"Marcas"},
+                            {"y":19,"y0":29,"month":"Tarjetas"},
+                            {"y":20,"y0":27,"month":"Tiendas"}
+                        ],[
+                            {"y":8,"y0":24,"month":"Productos"},
+                            {"y":14,"y0":26,"month":"Promociones"},
+                            {"y":12,"y0":31,"month":"Cupones"},
+                            {"y":15,"y0":33,"month":"Destinos"},
+                            {"y":18,"y0":37,"month":"Marcas"},
+                            {"y":16,"y0":29,"month":"Tarjetas"},
+                            {"y":17,"y0":27,"month":"Tiendas"}
+                        ]
+                    ]
+                }
+
+    let n = dataset["series"].length; // Number of Layers
+    let m = dataset["layers"].length; // Number of Samples in 1 layer
+
+    let yGroupMax = d3.max(dataset["layers"], function(layer) { return d3.max(layer, function(d) { return d.y0; }); });
+    let yGroupMin = d3.min(dataset["layers"], function(layer) { return d3.min(layer, function(d) { return d.y; }); });
+
+    var margin = {top: 50, right: 50, bottom: 50, left: 100},
+        width = 900 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+    var x = d3.scale.ordinal()
+        .domain(dataset["categories"])
+        .rangeRoundBands([0, width], .08);
+
+    var y = d3.scale.linear()
+        .domain([yGroupMin, yGroupMax])
+        .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .tickSize(5)
+        .tickPadding(6)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+    var svg = d3.select("#chart1").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var layer = svg.selectAll(".layer")
+        .data(dataset["layers"])
+        .enter().append("g")
+        .attr("class", "layer");
+
+    var rect = layer.selectAll("rect")
+        .data(function(d,i){d.map(function(b){b.colorIndex=i;return b;});return d;})
+        .enter().append("rect")
+        .transition()
+        .duration(500)
+        .delay(function(d, i) { return i * 10; })
+        .attr("x", function(d, i, j) { return x(d.month) + x.rangeBand() / n * j; })
+        .attr("width", x.rangeBand() / n)
+        .transition()
+        .attr("y", function(d) { return y(d.y0); })
+        .attr("height", function(d) { return height - y(d.y0-d.y)})
+        .attr("class","bar")
+        .style("fill",function(d){return dataset["colors"][d.colorIndex];})
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+        svg.select("g")
+            .attr("class", "y axis")
+            .call(yAxis);
+
+        svg.append("text")
+        .attr("x", width/3)
+        .attr("y", 0)
+        .attr("dx", ".71em")
+        .attr("dy", "-.71em")
+        .text("USUARIOS - FACTURAS - COMPRAS");
+
+    // add legend
+    var legend = svg.append("g")
+      .attr("class", "legend")
+
+    legend.selectAll('text')
+      .data(dataset["colors"])
+      .enter()
+      .append("rect")
+      .attr("x", width-margin.right)
+      .attr("y", function(d, i){ return i *  20;})
+      .attr("width", 10)
+      .attr("height", 10)
+      .style("fill", function(d) {
+        return d;
+      })
+
+    legend.selectAll('text')
+      .data(dataset["series"])
+      .enter()
+    .append("text")
+    .attr("x", width-margin.right + 25)
+    .attr("y", function(d, i){ return i *  20 + 9;})
+    .text(function(d){return d});
+
+    var tooltip = d3.select("body")
+    .append('div')
+    .attr('class', 'tooltip');
+
+    tooltip.append('div')
+    .attr('class', 'month');
+    tooltip.append('div')
+    .attr('class', 'tempRange');
+
+    svg.selectAll("rect")
+    .on('mouseover', function(d) {
+        if(!d.month)return null;
+
+        tooltip.select('.month').html("<b>" + d.month + "</b>");
+        tooltip.select('.tempRange').html(d.y + "&#8451; to " + d.y0 + "&#8451;");
+
+        tooltip.style('display', 'block');
+        tooltip.style('opacity',2);
+
+    })
+    .on('mousemove', function(d) {
+
+        if(!d.month)return null;
+
+        tooltip.style('top', (d3.event.layerY + 10) + 'px')
+        .style('left', (d3.event.layerX - 25) + 'px');
+    })
+    .on('mouseout', function() {
+        tooltip.style('display', 'none');
+        tooltip.style('opacity',0);
+    });}
+        </script>
+        </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

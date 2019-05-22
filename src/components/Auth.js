@@ -1,13 +1,6 @@
 import auth0 from "auth0-js";
-import { withRouter } from 'react-router-dom';
-import ProductoList from './/ProductoList';
-
-
 
 export default class Auth{
-
-
-
     auth0= new auth0.WebAuth({
 
         domain: "isis2503-jdcarrillor.auth0.com",
@@ -30,9 +23,6 @@ export default class Auth{
                 localStorage.setItem("expires_at", expiresAt);
 
               //withRouter.history.push('/ProductoList');
-
-
-
 
             }
             

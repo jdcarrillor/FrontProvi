@@ -25,17 +25,11 @@ import DestinoList from './DestinoList'
 import DestinoDetail from './DestinoDetail'
 import FacturaList from './FacturaList'
 import FacturaDetail from './FacturaDetail'
-
-import {BrowserRouter, Switch} from 'react-router-dom'
-
-import  Callback from './Callback.js'
 import  Login from './Login.js'
 
 import Home from './Home'
-import Auth from './Auth.js'
 
 
-const  auth = new Auth();
 class Vista extends Component {
 
     render() {

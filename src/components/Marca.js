@@ -25,61 +25,54 @@ class Marca extends Component{
       this.setState(stateAB);
     }
     else if(this.props.data.descripcion.search("Marca de ropa y accesorios de lujo")===0 && detectBrowserLanguage()==='en'){
-      var stateAB = this.state;
-      var a=this.props.data.descripcion.replace("Marca de ropa y accesorios de lujo", "");
-      var b=a.concat(" ", "Accessories and clothes luxury  brand");
-      stateAB.descripcion=b;
-      this.setState(stateAB);
+      var stateCD = this.state;
+      var c=this.props.data.descripcion.replace("Marca de ropa y accesorios de lujo", "");
+      var d=c.concat(" ", "Accessories and clothes luxury  brand");
+      stateCD.descripcion=d;
+      this.setState(stateCD);
     }
     else if(this.props.data.descripcion.search("Marca de ropa y accesorios")===0 && detectBrowserLanguage()==='en'){
-      var stateAB = this.state;
-      var a=this.props.data.descripcion.replace("Marca de ropa y accesorios", "");
-      var b=a.concat(" ", "Accessories and clothes brand");
-      stateAB.descripcion=b;
-      this.setState(stateAB);
+      var stateEF = this.state;
+      var e=this.props.data.descripcion.replace("Marca de ropa y accesorios", "");
+      var f=e.concat(" ", "Accessories and clothes brand");
+      stateEF.descripcion=f;
+      this.setState(stateEF);
     }
     else if(this.props.data.descripcion.search("Maraca de ropa, accesorios y zapatos de lujo")===0 && detectBrowserLanguage()==='en'){
-      var stateAB = this.state;
-      var a=this.props.data.descripcion.replace("Maraca de ropa, accesorios y zapatos de lujo", "");
-      var b=a.concat(" ", "Luxury accessories, clothes and footwear brand");
-      stateAB.descripcion=b;
-      this.setState(stateAB);
+      var stateGH = this.state;
+      var g=this.props.data.descripcion.replace("Maraca de ropa, accesorios y zapatos de lujo", "");
+      var h=g.concat(" ", "Luxury accessories, clothes and footwear brand");
+      stateGH.descripcion=h;
+      this.setState(stateGH);
     }
      else if(this.props.data.descripcion.search("Marca de ropa y calzado")===0 && detectBrowserLanguage()==='en'){
-      var stateAB = this.state;
-      var a=this.props.data.descripcion.replace("Marca de ropa y calzado", "");
-      var b=a.concat(" ", "Clothes and footwear brand");
-      stateAB.descripcion=b;
-      this.setState(stateAB);
+      var stateIJ = this.state;
+      var i=this.props.data.descripcion.replace("Marca de ropa y calzado", "");
+      var j=i.concat(" ", "Clothes and footwear brand");
+      stateIJ.descripcion=j;
+      this.setState(stateIJ);
     }
     else if(this.props.data.descripcion.search("Marca de ropa, accesorios y calzado de lujo")===0 && detectBrowserLanguage()==='en'){
-      var stateAB = this.state;
-      var a=this.props.data.descripcion.replace("Marca de ropa, accesorios y calzado de lujo", "");
-      var b=a.concat(" ", "Accessories , clothes and footwear luxury  brand");
-      stateAB.descripcion=b;
-      this.setState(stateAB);
+      var stateKL = this.state;
+      var k=this.props.data.descripcion.replace("Marca de ropa, accesorios y calzado de lujo", "");
+      var l=k.concat(" ", "Accessories , clothes and footwear luxury  brand");
+      stateKL.descripcion=l;
+      this.setState(stateKL);
     }
 
       else if(this.props.data.descripcion.search("Marca de calzado casual")===0 && detectBrowserLanguage()==='en'){
-      var stateAB = this.state;
-      var a=this.props.data.descripcion.replace("Marca de calzado casual", "");
-      var b=a.concat(" ", "Casual footwear brand");
-      stateAB.descripcion=b;
-      this.setState(stateAB);
+      var stateMN = this.state;
+      var m=this.props.data.descripcion.replace("Marca de calzado casual", "");
+      var n=m.concat(" ", "Casual footwear brand");
+      stateMN.descripcion=n;
+      this.setState(stateMN);
     }
-
-    
-
-
-
-
-    
   }
   render(){
     return(
       <div className="card text-center">
         <div className="overflow">
-          <img className='card-img-top' src={this.props.data.imagen} alt='Image 1'/>
+          <img className='card-img-top' src={this.props.data.imagen} alt='Image1'/>
         </div>
         <div className="card-body text-dark">
         <h1 className="card-title">{this.props.data.nombre}</h1>

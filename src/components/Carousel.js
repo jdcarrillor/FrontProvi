@@ -40,18 +40,6 @@ class CarouselClass extends Component{
         </div>
       </div>
 
-      <div className="owl-nav">
-
-        <div className="owl-prev">
-          <span className="icon-keyboard_arrow_left">
-          </span>
-        </div>
-        <div className="owl-next">
-          <span className="icon-keyboard_arrow_right">
-          </span>
-        </div>
-
-      </div>
     </div>
     </div>
     );

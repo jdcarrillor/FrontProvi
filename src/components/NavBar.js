@@ -1,13 +1,6 @@
-import React, {Component} from 'react'
+import React from 'react'
 import '../css/nav.css';
 import {FormattedMessage} from "react-intl";
-import Auth from "./Auth.js"
-import decode from "jwt-decode";
-
-
-
-const auth = new Auth();
-
 
 const NavBar =(props)=> (
 
@@ -70,7 +63,7 @@ const NavBar =(props)=> (
         </li>
 
         <li className="nav-item active">
-          <a className="nav-link" href="#"><img className="abr" src="https://static1.squarespace.com/static/55b13236e4b0ba28db37e41a/5b05ac2ef950b76fb5f198b4/5b05bab26d2a731b78aad9f4/1527105845666/AKF0049-Shopping-Trolley-Icon.png" alt="Car"></img></a>
+          <a className="nav-link" href="#"><img className="abr" src="http://icon-park.com/imagefiles/shopping_cart_pink.png" alt="Car"></img></a>
         </li>
         <li className="nav-item active" hidden={!props.logged || props.ADMIN}>
           <a className="nav-link" href="#"><img className="abr" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/user-female-circle-pink-512.png" alt="UserIcon"></img></a>

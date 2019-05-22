@@ -154,7 +154,7 @@ class TiendaDetail extends Component{
       <div className="float-left">
         <div className="card text-center eso">
           <div className="overflow">
-            <img className='card-img-top' src={this.state.imagen} alt='Image 1'/>
+            <img className='card-img-top' src={this.state.imagen} alt='Image1'/>
           </div>
 
             <div className="card-body text-dark">

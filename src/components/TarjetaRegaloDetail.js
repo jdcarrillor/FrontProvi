@@ -129,13 +129,13 @@ class TarjetaRegaloDetail extends Component{
       <div className="float-left">
       <div className="card text-center">
         <div className="overflow">
-          <img className='card-img-top' src={this.state.imagenes[0]} alt='Image 1'/>
+          <img className='card-img-top' src={this.state.imagenes[0]} alt='Image1'/>
         </div>
         <div className="card-body text-dark">
         <h2 className="card-title">{this.state.titulo}</h2>
         <p className="card-text text-secondary">{this.state.mensaje}</p>
         <div className="overflow">
-          <img className='card-img-top' src={this.state.plantilla} alt='Image 1'/>
+          <img className='card-img-top' src={this.state.plantilla} alt='Image1'/>
         </div>
         <div className="container">
         <Link to={{

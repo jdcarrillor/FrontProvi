@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import Vista from './components/Structure.js';
 import {BrowserRouter} from 'react-router-dom';
 import './App.css';
-import {IntlProvider, addLocaleData} from 'react-intl';
-import esLocaleData from 'react-intl/locale-data/es';
-import localeEsMessages from "./locales/es";
-import enLocaleData from 'react-intl/locale-data/en';
-import localeEnMessages from "./locales/en";
 
 class App extends Component {
   constructor(props){

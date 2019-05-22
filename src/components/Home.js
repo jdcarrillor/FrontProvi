@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import CarouselClass from './Carousel'
+import CarouselClass from './Carousel';
 import '../css/owl.carousel.min.css';
 import '../css/owl.theme.default.min.css';
 import '../css/bootstrap.min.css';
@@ -80,7 +80,7 @@ class Home extends Component{
                                         <p><FormattedMessage id="StoresMessage"/></p>
                                         <p><a className="btn2" style= {{float:"none", textTransform:"lowercase"}} href="/TiendaList"><FormattedMessage id="Stores"/><span className="bg"></span></a></p>
                                     </div>
-                                    <a href="/TiendaList" style= {{width:"100%", height:"100%", paddingTop:"10%"}}><img src="http://nortonsetuphelp.info/wp-content/uploads/building-ecommerce-house-market-marketplace-shop-shopping-store-png.png" alt="tien" width="100%" height="100%" /></a>
+                                    <a href="/TiendaList" style= {{width:"100%", height:"100%", paddingTop:"10%"}}><img src="http://chittagongit.com/download/175739" alt="Stores" width="100%" height="100%" /></a>
 
                                 </div>
                             </div>
